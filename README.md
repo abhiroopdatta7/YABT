@@ -7,6 +7,6 @@ This is a attempt to create a YAML based build tool for "C" and "C++" Programmin
 ![idea](images/idea.excalidraw.svg)
 
 ## TODOS
- - [ ] Create a basic YAML format for reading.
+ - [X] Create a basic YAML format for reading. [example](examples/yabt.yaml)
  - [ ] Create a basic Makefile for the corrosponfint YAML file.
  - [ ] 
