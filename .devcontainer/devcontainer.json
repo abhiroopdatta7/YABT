@@ -7,16 +7,21 @@
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
-
+	"mounts": [
+        "type=bind,source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh"
+    ],
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
 			"settings": {},
 			"extensions": [
+				"golang.go",
+				"golangci.golangci-lint",
 				"streetsidesoftware.code-spell-checker",
 				"yzhang.markdown-all-in-one",
-				"redhat.vscode-yaml"
+				"redhat.vscode-yaml",
+				"pomdtr.excalidraw-editor"
 			]
 		}
 	},
