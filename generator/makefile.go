@@ -42,7 +42,7 @@ func (m *Makefile) GenerateVersion(version string) {
 // GenerateBuildDir adds a BUILD_DIR variable and a rule to create the build directory.
 func (m *Makefile) GenerateBuildDir(name string) {
 	m.variables = append(m.variables, "BUILD_DIR ?= "+name)
-	m.addRule("", "$(BUILD_DIR)", nil, []string{"@mkdir -p $(@)"})
+	m.addRule("", "$(BUILD_DIR)", nil, []string{"@mkdir -p $@"})
 	m.addOptionalCleanItem("rm -rf $(BUILD_DIR)")
 }
 
@@ -86,7 +86,7 @@ func (m *Makefile) AddSource(source string) {
 		objFile := strings.TrimSuffix(source, ".cpp") + ".o"
 		objFilePath := "$(BUILD_DIR)/" + objFile
 		basedir := filepath.Dir(objFilePath)
-		m.addRule("", basedir, nil, []string{"@mkdir -p $(@)"})
+		m.addRule("", basedir, nil, []string{"@mkdir -p $@"})
 		m.addRule("", objFilePath, []string{source, basedir}, []string{"$(CXX) $(CXXFLAGS) -c $< -o $@"})
 	}
 }
