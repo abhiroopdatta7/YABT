@@ -6,6 +6,10 @@ This is a attempt to create a YAML based build tool for "C" and "C++" Programmin
 
 ![idea](images/idea.excalidraw.svg)
 
-## TODOS
- - [X] Create a basic YAML format for reading. [example](examples/yabt.yaml)
+## TODO
+ - [X] Create a basic YAML format for reading. [example](examples/project/yabt.yaml)
  - [X] Create example Project
+ - [ ] Create YAML Config parser
+ - [ ] Create Generator Interface
+ - [ ] Create Makefile generator
+ - [ ] Create CMake generator
