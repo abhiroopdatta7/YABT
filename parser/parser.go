@@ -37,7 +37,7 @@ func GenerateFromConfig(config Config, generatorType string, outDir string) erro
 	if err != nil {
 		return err
 	}
-	generatorInstance.GenerateProjectName(projectName)
+
 	generatorInstance.GenerateVersion(config.GetVersion())
 	generatorInstance.GenerateCPPStandard(config.GetCPPStandard())
 	generatorInstance.GenerateBuildDir(config.GetOutputDirectory())
@@ -62,6 +62,7 @@ func GenerateFromConfig(config Config, generatorType string, outDir string) erro
 		generatorInstance.AddSource(source)
 	}
 
+	generatorInstance.GenerateProjectName(projectName, config.GetOutputType())
 	err = generatorInstance.GenerateFiles(outDir)
 	if err != nil {
 		return err

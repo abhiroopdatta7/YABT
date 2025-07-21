@@ -4,7 +4,7 @@ import "fmt"
 
 type Generator interface {
 	Name() string
-	GenerateProjectName(string)
+	GenerateProjectName(string, string)
 	GenerateVersion(string)
 	GenerateCPPStandard(int)
 	GenerateBuildDir(string)

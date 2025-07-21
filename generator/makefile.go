@@ -17,6 +17,7 @@ type Makefile struct {
 	cleanItems []string
 	rules      strings.Builder
 	targets    []string // List of targets for the Makefile
+	objects    []string // List of object files
 }
 
 // makefile creates a new Makefile instance.
@@ -30,8 +31,9 @@ func (m *Makefile) Name() string {
 }
 
 // GenerateProjectName adds a PROJECT_NAME variable to the Makefile header.
-func (m *Makefile) GenerateProjectName(name string) {
+func (m *Makefile) GenerateProjectName(name string, projectType string) {
 	m.variables = append(m.variables, "PROJECT_NAME := "+name)
+	m.addRule("", "$(BUILD_DIR)/$(PROJECT_NAME)", m.objects, []string{"$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) $(LIBS)"})
 }
 
 // GenerateVersion adds a VERSION variable to the Makefile header.
@@ -88,6 +90,7 @@ func (m *Makefile) AddSource(source string) {
 		basedir := filepath.Dir(objFilePath)
 		m.addRule("", basedir, nil, []string{"@mkdir -p $@"})
 		m.addRule("", objFilePath, []string{source, basedir}, []string{"$(CXX) $(CXXFLAGS) -c $< -o $@"})
+		m.objects = append(m.objects, objFilePath)
 	}
 }
 
