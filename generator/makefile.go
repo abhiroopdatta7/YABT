@@ -101,7 +101,7 @@ func (m *Makefile) GenerateFiles(outDir string) error {
 		}
 	}
 
-	file, err := os.OpenFile(outDir+"/Makefile", os.O_WRONLY, 0644)
+	file, err := os.OpenFile(outDir+"/Makefile", os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0644)
 	if err != nil {
 		return err
 	}
