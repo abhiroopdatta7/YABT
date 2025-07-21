@@ -1,13 +1,27 @@
 project_name: example_project
 version: 1.0
 cpp_standard: 11
+output_directory: build
 output_type: executable # Can be 'library' or 'executable'
 # library_type: static # Can be 'static' or 'shared'
 include_dirs:
+  - localinclude
   - include
+libraries:
+  - pthread
+  - m
+lib_dirs:
+  - /usr/local/lib
+flags:
+  - -Wall
+  - -Wextra
+  - -O2
+source:
+  - src/main.cpp
+  - src/utils.cpp
+  - src/helpers.cpp
 source_patterns:
   - src/*.cpp
-install: true # Optional
 external_projects:
   - name: logtard
     git_repo: https://github.com/araujo88/logtard.git

@@ -32,4 +32,7 @@ go.work.sum
 .vscode/
 
 # Executable files
-YABT
+yabt
+
+# Exclude tmp directory
+tmp/*

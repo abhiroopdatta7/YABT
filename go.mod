@@ -1,4 +1,4 @@
-module YABT
+module yabt
 
 go 1.22.12
 
